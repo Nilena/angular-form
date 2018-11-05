@@ -1,0 +1,21 @@
+<style>
+    .loginForm {
+        border: 1px solid gray;
+        padding: 20px;
+        width: 350px;
+        position: relative;
+        margin: auto;
+    }
+</style>
+<div 
+<div class="loginForm">
+    <h3 class="smallHeading">Login</h3>
+    {{ test }}
+    <form name="form" ng-submit='auth()'>
+	
+	<input type="text" ng-model="login.username" placeholder="enter the username"> <br>
+	<input type="password" ng-model="login.password" placeholder="enter the password"> <br>
+	<button type="submit">submit</button>
+	</form>
+	
+</div>
