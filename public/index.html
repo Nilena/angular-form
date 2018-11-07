@@ -6,20 +6,25 @@
 		<script src="node_modules/angular-route/angular-route.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
-	<body ng-app="adminPanel">
+	<body ng-app="adminPanel" ng-controller="mainContr">
 		<header>
 			<h1><a href="#!/">Admin Panel</a></h1>
 			<nav>
 				<ul>
-					<li><a href="#" id="bgChangeBtn">Change BG</a></li>
+					<li ng-if="isLogged"><a ng-click="logout()" href="javascript:void(0)" id="bgChangeBtn">Logout</a></li>
 				</ul>
 			</nav>
 		</header>
 		
-		<main ng-controller="mainContr">
+		<main>
 			<ng-view></ng-view>
 		</main>
 		<!-- <div class="hiddenPlace"></div> -->
 	<script type="text/javascript" src="app/main.js"></script>
+	<script type="text/javascript" src="app/route/mainRoute.js"></script>
+	<script type="text/javascript" src="app/directive/login/loginDirective.js"></script>
+	<script type="text/javascript" src="app/directive/register/registerDirective.js"></script>
+	<script type="text/javascript" src="app/directive/userList/userListDirective.js"></script>
+	<script type="text/javascript" src="app/directive/viewUser/viewUserDirective.js"></script>
 	</body>
 </html>

@@ -10,13 +10,13 @@
             <br>  
         <legend style="text-align:center"> Please Register  </legend>
 
-        <form name="form" id="form" action="#">  
+        <form name="form" id="form" ng-submit='adduserSave()'>  
           <div class="form-group">
             <label for="Name">Name:</label>
             
               <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-           <input type="text" onchange="getName()" class="form-control"  id="name" placeholder="Enter your full name" name="name" autocomplete="off" tabindex="1" autofocus="auto">
+           <input type="text" ng-model="userDetails.name"  class="form-control"  id="name" placeholder="Enter your full name" name="name" autocomplete="off" tabindex="1" autofocus="auto">
             </div>
     </div>
           
@@ -24,30 +24,29 @@
            <label for="mobile">Mobile:</label>
                 <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-           <input type="text" Onchange="getNumber()" class="form-control" id="number" placeholder="Enter your mobile number"   name="mobile" autocomplete="off" tabindex="2">
+           <input type="text" ng-model="userDetails.mobile"  class="form-control" id="number" placeholder="Enter your mobile number"   name="mobile" autocomplete="off" tabindex="2">
               </div></div>
 
-              <label for="gender">Gender:</label>
+              <label for="gender" ng-model="userDetails.gender" >Gender:</label>
         <div>  <label class="radio-inline"><input type="radio" name="optradio"tabindex="3" checked>Male</label>
 <label class="radio-inline"><input type="radio" name="optradio" tabindex="3">Female</label>
 <label class="radio-inline"><input type="radio" name="optradio" tabindex="3">Others</label>
           </div>
           <br>
             
-        <div class="form-group">
-<!--            <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> -->      <label for="email">Email:</label>
+        <div class="form-group">  
+           <label for="email">Email:</label>
              <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
      
-           <input type="text" Onchange="getEmail()" class="form-control" id="email" placeholder="Enter your email" name="email" autocomplete="off" tabindex="4"></div>
+           <input type="text" ng-model="userDetails.email"  class="form-control" id="email" placeholder="Enter your email" name="email" autocomplete="off" tabindex="4"></div>
        </div>
     <div class="form-group">
       
       <label for="pwd">Password:</label>
        <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-      <input type="password" Onchange="getPassword(this)" class="form-control" id="pwd" placeholder="Enter password" class="tooltext" title="Make it hard to guess.(should contain atleast 6 to 20 char: one special char, one uppercase&lowercase and a digit" name="pwd" tabindex="5"></div>
+      <input type="password"ng-model="userDetails.password" class="form-control" id="pwd" placeholder="Enter password" class="tooltext" title="Make it hard to guess.(should contain atleast 6 to 20 char: one special char, one uppercase&lowercase and a digit" name="pwd" tabindex="5"></div>
     </div>
    
     <div class="form-group">
@@ -55,16 +54,16 @@
       <label for="pwd">Confirm Password:</label>
           <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-      <input type="password" Onchange="confirmPassword()" class="form-control" id="cnpwd" placeholder="Enter password again" class="tooltext"  name="cnpwd" tabindex="6">
+      <input type="password"  class="form-control" id="cnpwd" placeholder="Enter password again" class="tooltext"  name="cnpwd" tabindex="6">
     </div>
    
            <div class="form-group">
       <label for="address">Address:</label>
-      <textarea onchange="address()" class="form-control" rows="5" id="address" placeholder="Enter your address" name="address" autocomplete="off" tabindex="7"></textarea>
+      <textarea ng-model="userDetails.address"  class="form-control" rows="5" id="address" placeholder="Enter your address" name="address" autocomplete="off" tabindex="7"></textarea>
       <!-- <input type="texarea" class="form-control" id="address" placeholder="Enter your address" name="address" autocomplete="off"> -->
     </div>
     <button type="submit" id="submit"  class="btn btn-default" tabindex="8">Submit</button> 
-           <button type="submit" id="submit"  class="btn btn-default" tabindex="11"  data-toggle="modal" data-target="#myModal">Cancel</button> 
+           <button type="submit" id="submit2"  class="btn btn-default" tabindex="11"  data-toggle="modal" data-target="#myModal">Cancel</button> 
   </form> 
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">

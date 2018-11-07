@@ -1,0 +1,144 @@
+<style>
+.registerForm {
+    position: relative;
+    margin: auto;
+    text-align: center;
+    width: 700px;
+}
+.row {
+    display: flex;
+    position: relative;
+}
+.item {
+    position: relative;
+    width: 100%;
+    margin: 6px 15px;
+    text-align: left;
+}
+input[type=radio] {
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+}
+input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+}
+.radioRow {
+    /* background-color: burlywood; */
+    padding: 5px;
+}
+label {
+    margin-left: 0px;
+    font-size: 18px;
+    font-weight: bold;
+    color: darkslategrey;
+}
+.inputBox {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid silver;
+    border-radius: 3px;
+}
+.note {
+    font-size: 14px;
+    color: rgb(20, 20, 20)!important;
+}
+.ng-valid {
+    outline: 1px solid green;
+}
+input[type=radio]{
+    outline: none!important;
+}
+
+</style>
+
+<div class="registerForm">
+    <h3 class="smallHeading">Register Here</h3>
+    <form ng-submit="addUser(true)" name="registerForm">
+        <div class="row">
+            <div class="item">
+                <label for="firstname">Firstname</label>
+                <input class="inputBox" type="text" id="firstname" ng-model="user.firstname" ng-pattern="/^[a-z]+/i" required>
+            </div>
+            <div class="item">
+                <label for="lastname">Lastname</label>
+                <input class="inputBox" type="text" id="lastname" ng-model="user.lastname" ng-pattern="/^[a-z]+/i" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="item">
+                <label for="email">Email</label>
+                <input class="inputBox" type="text" id="email" ng-model="user.email" ng-pattern="/^\w+?\.?\w+@{1}\w+\.\w{2,3}\b/i" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="item">
+                <label for="password">Password</label>
+                <input class="inputBox" type="text" id="password" ng-model="user.password" ng-pattern="/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*-+]).{8,20})/" required>
+            </div>
+            <div class="item">
+                <label for="confpass">Confirm Password</label>
+                <input class="inputBox" type="text" id="confpass" ng-model="user.confPassword" ng-pattern="/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*-+]).{8,20})/" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="item">
+                <label for="phone">Phone</label>
+                <input class="inputBox" type="text" id="phone" ng-model="user.phone" ng-pattern="/^\d{10}\b/" required>
+            </div>
+            <div class="item">
+                <label>Gender</label><br>
+                <div class="radioRow">
+                    <input type="radio" id="male" name="gender" value="male" ng-model="user.gender">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female" ng-model="user.gender">
+                    <label for="female">Female</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="item">
+                <label for="addrline1">Address Line 1</label>
+                <input class="inputBox" type="text" id="addrline1" ng-model="user.addressLine1" ng-pattern="/\w.*/i" required>
+            </div>
+            <div class="item">
+                <label for="addrline2">Address Line 2</label>
+                <input class="inputBox" type="text" id="addrline2" ng-model="user.addressLine2" ng-pattern="/\w.*/i" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="item">
+                <label for="city">City</label>
+                <input class="inputBox" type="text" id="city" ng-model="user.city" ng-pattern="/\w.*/i" required>
+            </div>
+            <div class="item" style="width:423px">
+                <label for="state">State</label><br>
+                <select class="inputBox" id="state" ng-model="user.state" required>
+                    <option value="">Choose State...</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="tamil nadu">Tamil Nadu</option>
+                    <option value="karnataka">Karnataka</option>
+                </select>
+            </div>
+            <div class="item" style="width:200px">
+                <label for="pin">Pin</label>
+                <input class="inputBox" type="text" id="pin" ng-model="user.pin" ng-pattern="/^\d{6}\b/" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="item">
+                <input type="checkbox" id="tc" required>
+                <label style="vertical-align:top; position: relative; top: 6px;" class="note" for="tc">Agrees the terms and conditions.</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="item" style="text-align:center">
+                <input type="submit" ng-disabled="registerForm.$invalid" ng-click="addUser(true)" class="btn center" style="display: inline-block; width: 200px; text-align: center" value="{{ buttonText }}">
+                <input type="submit" ng-disabled="registerForm.$invalid" ng-click="addUser(false)" class="btn center" style="display: inline-block; width: 200px; text-align: center" value="{{ buttonText }} & Continue">
+            </div>
+        </div>
+    </form>
+</div>
+
