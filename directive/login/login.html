@@ -6,16 +6,22 @@
         position: relative;
         margin: auto;
     }
+    input[type=text], input[type=password]{
+        padding:10px;
+        width:100%;
+    }
+
 </style>
+
 <div 
 <div class="loginForm">
-    <h3 class="smallHeading">Login</h3>
-    {{ test }}
+    <h3  style="text-align:center; ">Login</h3>
     <form name="form" ng-submit='auth()'>
 	
 	<input type="text" ng-model="login.username" placeholder="enter the username"> <br>
 	<input type="password" ng-model="login.password" placeholder="enter the password"> <br>
-	<button type="submit">submit</button>
+    <span ng-if="err == true" style="color:red">Invalid Username & password</span><br>
+	<button style="margin: 10px auto; " class="btn btn-success" type="submit">submit</button>
 	</form>
 	
 </div>

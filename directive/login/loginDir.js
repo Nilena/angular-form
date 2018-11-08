@@ -7,7 +7,8 @@
         .factory('authentication', function(){
         	return{
         		validate: function(login){
-        			if ((login.username=='nilena' && login.password=='nilena')) {
+        			if ((login.username=='admin' && login.password=='admin')) {
+        				sessionStorage.setItem('user',login.username);
         				return true;
         			} else{
         				return false;
@@ -31,13 +32,13 @@
 					username:'',
 					password:''
 					};
-			scope.test = "hi";
 	
 		scope.auth= function(){
 			
 			if(authentication.validate(scope.login)){
 				$location.path('/userhome');
 			} else{
+				scope.err = true;
 				console.log("invalid user...");
 			}
 		}

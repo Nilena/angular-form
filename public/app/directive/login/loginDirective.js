@@ -29,7 +29,7 @@
         return {
             login: function(login) {
                 if(login.username === 'arun' && login.password === '5851') {
-                    let uid = Math.floor((Math.random() * 100000000) + 1);
+                  
                     sessionStorage.setItem('userInfo', JSON.stringify({id: uid, name: login.username}));
                     return true;
                 } else {

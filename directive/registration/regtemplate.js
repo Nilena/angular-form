@@ -3,29 +3,34 @@
   angular.module('adminApp')
     .directive('regDir',regdirective)
     .factory('adduserFactory', function(){
+      let userlist;
       return {
-        save: function(user){
-          console.log(user);
-          let userlist;
-          if(localStorage.getItem('userList')!=null){
-              userlist= JSON.parse(localStorage.getItem('userList'));
-          } else{
-            userlist=[];
-          }
-          userlist.push(user);
-          localStorage.setItem('userList', JSON.stringify(userlist));
+        save: function(userList){
+          console.log(userList);
+          localStorage.setItem('userList', JSON.stringify(userList));
+        },
+        get: get
+      }
+      function get() {
+        userlist= JSON.parse(localStorage.getItem('userList'));
+        if(userlist) {
+          return userlist;
+        } else {
+          return [];
         }
       }
     })
-    regdirective.$inject=['adduserFactory', '$location'];
+    regdirective.$inject=['adduserFactory', '$location','editDataFactory'];
 
-    function  regdirective(adduserFactory, $location){
+    function  regdirective(adduserFactory, $location,editDataFactory){
       return {
         link:link,
         restrict: 'EA',
        templateUrl:'directive/registration/regtemplate.html'
     }
     function link(scope, element, attr){
+      scope.userlist= adduserFactory.get();
+        function init(){
       scope.userDetails= {
         name:"",
         mobile:"",
@@ -33,12 +38,31 @@
         email:"",
         password:"",
         address:""
+      }}
+      let edit = editDataFactory.get('user');
+      if(edit) {
+        scope.userlist = edit.userlist;
+        scope.userDetails = scope.userlist[edit.id];
       }
       scope.adduserSave = function(){
-        adduserFactory.save(scope.userDetails);
+
+        if(!edit) {
+          scope.userlist.push(scope.userDetails);
+        }
+
+        adduserFactory.save(scope.userlist);
+          init();
+        $location.path("/userhome");
+
+
+      }
+
+      scope.back= function (){
         $location.path("/userhome");
 
       }
+
+
     }
     };
 
