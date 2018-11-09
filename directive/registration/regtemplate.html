@@ -18,7 +18,7 @@ input .ng-invalid .ng-dirty {
         <legend style="text-align:center"> Please Register  </legend>
 
         <form style="outline:none" name="form1" id="form" ng-submit='adduserSave()'>  
-        
+
           <div class="form-group" ng-class="{ 'has-error' : form1.name.$invalid && !form1.name.$pristine }">
             <label for="Name">Name:</label>
             
@@ -71,9 +71,8 @@ input .ng-invalid .ng-dirty {
              <div class="input-group">
            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
            <input type="text" ng-model="userDetails.password"  class="form-control" placeholder="Enter your password" name="password" autocomplete="off" ng-pattern="/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@!*#$.%]).{6,20})/i"  tabindex="4" required>
-            <p ng-show="form1.email.$invalid && !form1.email.$pristine" class="help-block">Invalid Password. It should contain atleast 6char,a specialchar, number, lowercase</p>
-
         </div>
+        <p ng-show="form1.password.$invalid && !form1.password.$pristine" class="help-block">Invalid Password. It should contain atleast 6char,a specialchar, number, lowercase</p>
        </div>
     <!-- <div class="form-group" ng-class="{ 'has-error' : form1.confirmpassword.$invalid && !form1.confirmpassword.$pristine }">  
            <label for="password">Confirm Password:</label>
